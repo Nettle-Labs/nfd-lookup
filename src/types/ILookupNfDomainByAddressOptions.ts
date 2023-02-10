@@ -5,7 +5,6 @@ import ILogLevel from './ILogLevel';
 
 /**
  * Various options needed to get the NFDomain metadata from the chain.
- * @property {string} address - the Algorand address (public key) to lookup.
  * @property {Algodv2} algodClient - an inttialized Algod client that will be used to query the chain.
  * @property {ILogLevel} debug - [optional] whether logs will be printed to console.
  * @property {bigint} registryAppId - the app ID for the NFDomain you want to lookup. NOTE: you must use the correct
@@ -14,9 +13,7 @@ import ILogLevel from './ILogLevel';
  * choose.
  */
 interface ILookupNfDomainByAddressOptions {
-  address: string;
   algodClient: Algodv2;
-
   debug?: ILogLevel;
   registryAppId: bigint;
 }

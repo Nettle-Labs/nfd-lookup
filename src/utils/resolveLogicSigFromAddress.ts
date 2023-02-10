@@ -1,15 +1,13 @@
 import { bigIntToBytes, LogicSig } from 'algosdk';
 
 // Types
-import { ILookupNfDomainByAddressOptions } from '../types';
-import IUtilityOptions from '../types/IUtilityOptions';
+import { IUtilityOptions } from '../types';
 
-export default function resolveLogicSigFromAddress({
-  address,
-  logger,
-  registryAppId,
-}: Pick<ILookupNfDomainByAddressOptions, 'address' | 'registryAppId'> &
-  IUtilityOptions): LogicSig {
+export default function resolveLogicSigFromAddress(
+  address: string,
+  registryAppId: bigint,
+  { logger }: IUtilityOptions
+): LogicSig {
   /*
 		#pragma version 5
 		intcblock 1

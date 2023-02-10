@@ -10,19 +10,21 @@ import {
 // Utils
 import { resolveLogicSigFromAddress } from '../utils';
 
-export default async function findNfdAppIdByAddress({
+export default async function findNfdAppIdByAddress(
   address,
-  algodClient,
-  logger,
-  registryAppId,
-}: Omit<ILookupNfDomainByAddressOptions, 'debug'> & IUtilityOptions): Promise<
-  bigint | null
-> {
-  const logicSig: LogicSig = resolveLogicSigFromAddress({
-    address,
+  {
+    algodClient,
     logger,
     registryAppId,
-  });
+  }: Omit<ILookupNfDomainByAddressOptions, 'debug'> & IUtilityOptions
+): Promise<bigint | null> {
+  const logicSig: LogicSig = resolveLogicSigFromAddress(
+    address,
+    registryAppId,
+    {
+      logger,
+    }
+  );
   const appIds: bigint[] = [];
   let accountInformation: Record<string, any>;
   let appId: bigint;

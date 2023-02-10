@@ -17,11 +17,13 @@ describe('utils#lookupNfDomainByAddress()', () => {
   it('should return null if the registry app id is not valid', async () => {
     // Arrange
     // Act
-    const metadata: INfdMetadata | null = await lookupNfDomainByAddress({
+    const metadata: INfdMetadata | null = await lookupNfDomainByAddress(
       address,
-      algodClient,
-      registryAppId: BigInt('123456789'),
-    });
+      {
+        algodClient,
+        registryAppId: BigInt('123456789'),
+      }
+    );
 
     // Assert
     expect(metadata).toBeNull();
@@ -30,11 +32,13 @@ describe('utils#lookupNfDomainByAddress()', () => {
   it('should return null if the address has no nfdomain associated with it', async () => {
     // Arrange
     // Act
-    const metadata: INfdMetadata | null = await lookupNfDomainByAddress({
-      address: 'W62XMS3KZII4QAJKYQAHSO6P6ZR5P74YWP2KOROS7B4YXB4EGC3OHQ6H7Q',
-      algodClient,
-      registryAppId,
-    });
+    const metadata: INfdMetadata | null = await lookupNfDomainByAddress(
+      'W62XMS3KZII4QAJKYQAHSO6P6ZR5P74YWP2KOROS7B4YXB4EGC3OHQ6H7Q',
+      {
+        algodClient,
+        registryAppId,
+      }
+    );
 
     // Assert
     expect(metadata).toBeNull();
@@ -43,11 +47,13 @@ describe('utils#lookupNfDomainByAddress()', () => {
   it('should get nfd metadata for address', async () => {
     // Arrange
     // Act
-    const metadata: INfdMetadata | null = await lookupNfDomainByAddress({
+    const metadata: INfdMetadata | null = await lookupNfDomainByAddress(
       address,
-      algodClient,
-      registryAppId,
-    });
+      {
+        algodClient,
+        registryAppId,
+      }
+    );
 
     if (!metadata) {
       throw new Error('expected metadata to be defined');

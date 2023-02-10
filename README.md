@@ -49,14 +49,16 @@ const algodClient: Algodv2 = new Algodv2(
   'https://testnet-api.algonode.cloud',
   ''
 ); // first initialize your algod client
-const metadata: INfdMetadata | null = await lookupNfDomainByAddress({
-  address: 'QSTBDZMDPUHM6LESD54ZUT55KICOECJ4CPOMLAWNMSS3563ZK64HKJ65TM',
-  algodClient,
-  registryAppId: BigInt('84366825'), // this application ID MUST be the right one for the network
-});
+const metadata: INfdMetadata | null = await lookupNfDomainByAddress(
+  'QSTBDZMDPUHM6LESD54ZUT55KICOECJ4CPOMLAWNMSS3563ZK64HKJ65TM',
+  {
+    algodClient,
+    registryAppId: BigInt('84366825'), // this application ID MUST be the right one for the network
+  },
+);
 
 if (metadata) {
-  console.log(metadata.name); // kieran.algo
+  console.log(metadata.name); // nettle.algo
 }
 
 ```
