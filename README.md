@@ -44,14 +44,18 @@ $ yarn add @Nettle-Labs/nfd-lookup
 import { INfdMetadata, lookupNfDomainByAddress } from '@Nettle-Labs/nfd-lookup';
 import { Algodv2 } from 'algosdk';
 
-const algodClient: Algodv2 = new Algodv2('', 'https://testnet-api.algonode.cloud', ''); // first initialize your algod client
+const algodClient: Algodv2 = new Algodv2(
+  '',
+  'https://testnet-api.algonode.cloud',
+  ''
+); // first initialize your algod client
 const metadata: INfdMetadata | null = await lookupNfDomainByAddress({
   address: 'QSTBDZMDPUHM6LESD54ZUT55KICOECJ4CPOMLAWNMSS3563ZK64HKJ65TM',
   algodClient,
   registryAppId: BigInt('84366825'), // this application ID MUST be the right one for the network
 });
 
-if (!metadata) {
+if (metadata) {
   console.log(metadata.name); // kieran.algo
 }
 
