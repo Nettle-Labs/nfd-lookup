@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - beta
+      - main
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: "🛎 Checkout"
+        uses: actions/checkout@v3
+      - name: "🔧 Setup"
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+      - name: "📝 Create .npmrc"
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.PUBLISH_PACKAGES_TOKEN }}" >> .npmrc
+          echo "@nettlelabs:registry=https://registry.npmjs.org" >> .npmrc
+      - name: "📦 Install"
+        run: yarn install
+      - name: "🏗️ Build"
+        run: yarn build
+      - name: "🔖 Release"
+        env:
+          # appears on the release commits
+          GIT_AUTHOR_NAME: nettle-bot
+          GIT_AUTHOR_EMAIL: tech@nettlelabs.com
+          GIT_COMMITTER_NAME: nettle-bot
+          GIT_COMMITTER_EMAIL: tech@nettlelabs.com
+          # used to push the release commit and create the tags
+          GITHUB_TOKEN: ${{ secrets.READ_AND_WRITE_REPOS }}
+        run: yarn semantic-release
