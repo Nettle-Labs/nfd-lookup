@@ -11,7 +11,7 @@ import {
 import { resolveLogicSigFromAddress } from '../utils';
 
 export default async function findNfdAppIdByAddress(
-  address,
+  address: string,
   {
     algodClient,
     logger,
