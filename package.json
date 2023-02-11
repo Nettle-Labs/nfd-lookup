@@ -1,5 +1,5 @@
 {
-  "name": "@Nettle-Labs/nfd-lookup",
+  "name": "@nettlelabs/nfd-lookup",
   "version": "1.0.0",
   "description": "Allows the lookup of on-chain NFDomain metadata by address",
   "main": "dist/index.js",
@@ -32,15 +32,19 @@
   ],
   "license": "SEE LICENSE IN LICENSE",
   "private": false,
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "build": "tsc -b",
     "lint": "eslint . --ext .ts --ext .js",
     "prepare": "husky install",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,ts}\"",
-    "test": "jest"
+    "test": "jest --forceExit"
   },
   "dependencies": {
-    "algosdk": "^2.1.0"
+    "algosdk": "^2.1.0",
+    "buffer": "^6.0.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.1",
