@@ -30,7 +30,14 @@
       "url": "https://github.com/leslieoa"
     }
   ],
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "algorand",
+    "nettle",
+    "nfdomain",
+    "algosdk",
+    "blockchain"
+  ],
   "private": false,
   "engines": {
     "node": ">=14.0.0"
