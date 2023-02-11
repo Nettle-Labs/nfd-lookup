@@ -79,7 +79,7 @@ body:
       placeholder: The quantum realm is threatened and we must miniaturize to save it!
     validations:
       required: true
-  # Code of conduct
+  # Logs
   - type: textarea
     id: logs
     attributes:
