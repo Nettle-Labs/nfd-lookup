@@ -26,7 +26,8 @@ body:
       label: Version
       description: What version of the software are you running?
       options:
-        - 1.0.0 (Default)
+        - 1.1.0 (Default)
+        - 1.0.0
     validations:
       required: true
   # Platform
