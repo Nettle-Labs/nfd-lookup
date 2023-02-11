@@ -3,6 +3,9 @@ import { bigIntToBytes, LogicSig } from 'algosdk';
 // Types
 import { IUtilityOptions } from '../types';
 
+// Utils
+import concatBytes from './concatBytes';
+
 export default function resolveLogicSigFromAddress(
   address: string,
   registryAppId: bigint,
@@ -89,12 +92,12 @@ export default function resolveLogicSigFromAddress(
     `address/${address}`
   );
   const logicSig: LogicSig = new LogicSig(
-    new Uint8Array([
-      ...contractByteCode.subarray(0, 6),
-      ...bigIntToBytes(registryAppId, 8), // bytes 6-13 [0-index] with 0x01-0x08 placeholders is where we put the registry contract app id bytes in big-endian
-      ...contractByteCode.subarray(14),
-      ...new Uint8Array([lookUpBytes.byteLength]), // write the uvarint length of our lookup bytes
-      ...lookUpBytes, // append the bytes of the prefix + lookup to the end in a bytecblock chunk; the 0x26 0x01 at end of sigLookupByteCode
+    concatBytes([
+      contractByteCode.subarray(0, 6),
+      bigIntToBytes(registryAppId, 8), // bytes 6-13 [0-index] with 0x01-0x08 placeholders is where we put the registry contract app id bytes in big-endian
+      contractByteCode.subarray(14),
+      new Uint8Array([lookUpBytes.byteLength]), // write the uvarint length of our lookup bytes
+      lookUpBytes, // append the bytes of the prefix + lookup to the end in a bytecblock chunk; the 0x26 0x01 at end of sigLookupByteCode
     ])
   );
 

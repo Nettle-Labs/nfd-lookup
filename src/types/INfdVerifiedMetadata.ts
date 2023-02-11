@@ -11,7 +11,7 @@
  * @property {string} twitter - [optional] Twitter user id that was verified.
  */
 interface INfdVerifiedMetadata {
-  [key: string]: string;
+  [key: string]: string | undefined;
   avatar?: string;
   avatarasaid?: string;
   banner?: string;
