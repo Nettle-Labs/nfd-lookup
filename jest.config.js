@@ -12,6 +12,7 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'ts'],
   rootDir: '.',
+  setupFilesAfterEnv: ['<rootDir>/test/setup.ts'],
   testEnvironment: 'node',
   transform: {
     ...tsJestPreset.defaults.transform,
