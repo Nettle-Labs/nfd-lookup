@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Nettle-Labs/nfd-lookup/compare/v1.0.0...v1.1.0) (2023-02-11)
+
+
+### Features
+
+* enrich npm package ([#2](https://github.com/Nettle-Labs/nfd-lookup/issues/2)) ([ae54938](https://github.com/Nettle-Labs/nfd-lookup/commit/ae5493838a5735fd352ecf572e941dedb4237584))
+
 # 1.0.0 (2023-02-11)
 
 

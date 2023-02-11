@@ -1,6 +1,6 @@
 {
   "name": "@nettlelabs/nfd-lookup",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Allows the lookup of on-chain NFDomain metadata by address",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
